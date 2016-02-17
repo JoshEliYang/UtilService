@@ -20,4 +20,8 @@ public class PriceTagServiceImpl implements PriceTagService {
 		return priceTagDao.selectPriceTagsByShopId(shopId);
 	}
 
+	public List<PriceTag> selectAllDeletePriceTags() throws Exception {
+		return priceTagDao.selectAllDeletedPriceTags();
+	}
+
 }

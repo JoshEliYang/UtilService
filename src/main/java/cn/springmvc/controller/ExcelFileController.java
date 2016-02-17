@@ -40,7 +40,50 @@ public class ExcelFileController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/pricetag/{shopId}", method = RequestMethod.GET)
-	public void exportExcel(@PathVariable String shopId,
+	public void exportPriceTagsExcel(@PathVariable String shopId,
+			HttpServletRequest request, HttpServletResponse response) {
+
+		PrintWriter writer = null;
+		List<PriceTag> tags = null;
+		JSON json = null;
+		Map<String, Object> responseMap = null;
+		try {
+			writer = response.getWriter();
+			responseMap = new HashMap<String, Object>();
+			
+			tags = priceTagService.selectPriceTagsByShopId(shopId);
+			if (tags == null || tags.isEmpty()) {
+			    response.setCharacterEncoding("UTF-8");  
+			    response.setContentType("application/json; charset=utf-8"); 
+			    responseMap.put("code", 0);
+			    responseMap.put("data", null);
+			    responseMap.put("msg", "无数据");
+				json = (JSON) JSON.toJSON(responseMap);
+			    writer.println(json.toJSONString());
+				return;
+			}
+			
+			ExcelUtils.listToExcel(tags, this.getLeadToFiledPublicQuestionBank(), shopId, response);
+		} catch (Exception e) {
+		    response.setCharacterEncoding("UTF-8");  
+		    response.setContentType("application/json; charset=utf-8"); 
+		    responseMap.put("code", -1);
+		    responseMap.put("data", null);
+		    responseMap.put("msg", "服务器内部错误");
+			json = (JSON) JSON.toJSON(responseMap);
+		    writer.println(json.toJSONString());
+		}
+	}
+	
+	/**
+	 * @author Josh Yang
+	 * @description 获得所有价签
+	 * @date 2015-12-28
+	 * @return JSON
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/pricetag/deleted", method = RequestMethod.GET)
+	public void exportDeletedPriceTagsExcel(@PathVariable String shopId,
 			HttpServletRequest request, HttpServletResponse response) {
 
 		PrintWriter writer = null;
