@@ -83,8 +83,8 @@ public class ExcelFileController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/pricetag/deleted", method = RequestMethod.GET)
-	public void exportDeletedPriceTagsExcel(@PathVariable String shopId,
-			HttpServletRequest request, HttpServletResponse response) {
+	public void exportDeletedPriceTagsExcel(HttpServletRequest request, 
+			HttpServletResponse response) {
 
 		PrintWriter writer = null;
 		List<PriceTag> tags = null;
@@ -94,7 +94,7 @@ public class ExcelFileController {
 			writer = response.getWriter();
 			responseMap = new HashMap<String, Object>();
 			
-			tags = priceTagService.selectPriceTagsByShopId(shopId);
+			tags = priceTagService.selectAllDeletePriceTags();
 			if (tags == null || tags.isEmpty()) {
 			    response.setCharacterEncoding("UTF-8");  
 			    response.setContentType("application/json; charset=utf-8"); 
@@ -106,7 +106,7 @@ public class ExcelFileController {
 				return;
 			}
 			
-			ExcelUtils.listToExcel(tags, this.getLeadToFiledPublicQuestionBank(), shopId, response);
+			ExcelUtils.listToExcel(tags, this.getLeadToFiledPublicQuestionBank(), "已删除价签", response);
 		} catch (Exception e) {
 		    response.setCharacterEncoding("UTF-8");  
 		    response.setContentType("application/json; charset=utf-8"); 
