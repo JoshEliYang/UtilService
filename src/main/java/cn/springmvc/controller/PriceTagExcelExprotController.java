@@ -1,6 +1,5 @@
 package cn.springmvc.controller;
 
-
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -18,16 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
-import com.springmvc.utils.ExcelUtils;
-
 import cn.springmvc.model.PriceTag;
 import cn.springmvc.service.PriceTagService;
+
+import com.alibaba.fastjson.JSON;
+import com.springmvc.utils.ExcelUtils;
 
 @Scope("prototype")
 @Controller
 @RequestMapping("/excelexport")
-public class ExcelFileController {
+public class PriceTagExcelExprotController {
 
 	@Autowired
 	private PriceTagService priceTagService;
@@ -50,31 +49,32 @@ public class ExcelFileController {
 		try {
 			writer = response.getWriter();
 			responseMap = new HashMap<String, Object>();
-			
+
 			tags = priceTagService.selectPriceTagsByShopId(shopId);
 			if (tags == null || tags.isEmpty()) {
-			    response.setCharacterEncoding("UTF-8");  
-			    response.setContentType("application/json; charset=utf-8"); 
-			    responseMap.put("code", 0);
-			    responseMap.put("data", null);
-			    responseMap.put("msg", "无数据");
+				response.setCharacterEncoding("UTF-8");
+				response.setContentType("application/json; charset=utf-8");
+				responseMap.put("code", 0);
+				responseMap.put("data", null);
+				responseMap.put("msg", "无数据");
 				json = (JSON) JSON.toJSON(responseMap);
-			    writer.println(json.toJSONString());
+				writer.println(json.toJSONString());
 				return;
 			}
-			
-			ExcelUtils.listToExcel(tags, this.getLeadToFiledPublicQuestionBank(), shopId, response);
+
+			ExcelUtils.listToExcel(tags,
+					this.getLeadToFiledPublicQuestionBank(), shopId, response);
 		} catch (Exception e) {
-		    response.setCharacterEncoding("UTF-8");  
-		    response.setContentType("application/json; charset=utf-8"); 
-		    responseMap.put("code", -1);
-		    responseMap.put("data", null);
-		    responseMap.put("msg", "服务器内部错误");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json; charset=utf-8");
+			responseMap.put("code", -1);
+			responseMap.put("data", null);
+			responseMap.put("msg", "服务器内部错误");
 			json = (JSON) JSON.toJSON(responseMap);
-		    writer.println(json.toJSONString());
+			writer.println(json.toJSONString());
 		}
 	}
-	
+
 	/**
 	 * @author Josh Yang
 	 * @description 获得所有价签
@@ -83,7 +83,7 @@ public class ExcelFileController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/pricetag/deleted", method = RequestMethod.GET)
-	public void exportDeletedPriceTagsExcel(HttpServletRequest request, 
+	public void exportDeletedPriceTagsExcel(HttpServletRequest request,
 			HttpServletResponse response) {
 
 		PrintWriter writer = null;
@@ -93,28 +93,29 @@ public class ExcelFileController {
 		try {
 			writer = response.getWriter();
 			responseMap = new HashMap<String, Object>();
-			
+
 			tags = priceTagService.selectAllDeletePriceTags();
 			if (tags == null || tags.isEmpty()) {
-			    response.setCharacterEncoding("UTF-8");  
-			    response.setContentType("application/json; charset=utf-8"); 
-			    responseMap.put("code", 0);
-			    responseMap.put("data", null);
-			    responseMap.put("msg", "无数据");
+				response.setCharacterEncoding("UTF-8");
+				response.setContentType("application/json; charset=utf-8");
+				responseMap.put("code", 0);
+				responseMap.put("data", null);
+				responseMap.put("msg", "无数据");
 				json = (JSON) JSON.toJSON(responseMap);
-			    writer.println(json.toJSONString());
+				writer.println(json.toJSONString());
 				return;
 			}
-			
-			ExcelUtils.listToExcel(tags, this.getLeadToFiledPublicQuestionBank(), "已删除价签", response);
+
+			ExcelUtils.listToExcel(tags,
+					this.getLeadToFiledPublicQuestionBank(), "已删除价签", response);
 		} catch (Exception e) {
-		    response.setCharacterEncoding("UTF-8");  
-		    response.setContentType("application/json; charset=utf-8"); 
-		    responseMap.put("code", -1);
-		    responseMap.put("data", null);
-		    responseMap.put("msg", "服务器内部错误");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json; charset=utf-8");
+			responseMap.put("code", -1);
+			responseMap.put("data", null);
+			responseMap.put("msg", "服务器内部错误");
 			json = (JSON) JSON.toJSON(responseMap);
-		    writer.println(json.toJSONString());
+			writer.println(json.toJSONString());
 		}
 	}
 
