@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.springmvc.model.LastYearTrafficAnalysis;
 import cn.springmvc.service.LastYearTrafficAnalysisService;
-import cn.springmvc.service.PriceTagService;
 
 import com.alibaba.fastjson.JSON;
 import com.springmvc.utils.ExcelUtils;
@@ -28,9 +27,6 @@ import com.springmvc.utils.ExcelUtils;
 @RequestMapping("/reportexport")
 public class ReportExcelExprotController {
 
-	@Autowired
-	private PriceTagService priceTagService;
-	
 	@Autowired
 	private LastYearTrafficAnalysisService lastYearTrafficAnalysisService;
 
@@ -42,7 +38,7 @@ public class ReportExcelExprotController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/last_year_traffic", method = RequestMethod.GET)
-	public void exportPriceTagsExcel(HttpServletRequest request, 
+	public void exportLastYearTrafficReportExcel(HttpServletRequest request, 
 			HttpServletResponse response) {
 
 		PrintWriter writer = null;
