@@ -2,32 +2,32 @@ package cn.springmvc.model;
 
 public class DailySalesAnalysis {
 
-	private String ORDER_CREATE_DATE;
+	private String order_CREATE_DATE;
 
 	private String dayWeek;
 
-	private String CLIENT_TYPENAME;
+	private String client_TYPENAME;
 
-	private String STORE_TYPENAME;
+	private String store_TYPENAME;
 
-	private String STORE_NAME;
+	private String store_NAME;
 
-	private String ORDER_PRICE;
+	private String order_PRICE;
 
-	private String ORDER_NUMBER;
+	private String order_NUMBER;
 
-	private String ORDERAMOUNT;
+	private String orderamount;
 
-	private String ALLYH;
+	private String allyh;
 
-	private String PAYMENT_AMOUNT;
+	private String payment_AMOUNT;
 
 	public String getORDER_CREATE_DATE() {
-		return ORDER_CREATE_DATE;
+		return order_CREATE_DATE;
 	}
 
 	public void setORDER_CREATE_DATE(String oRDER_CREATE_DATE) {
-		ORDER_CREATE_DATE = oRDER_CREATE_DATE;
+		order_CREATE_DATE = oRDER_CREATE_DATE;
 	}
 
 	public String getDayWeek() {
@@ -39,84 +39,84 @@ public class DailySalesAnalysis {
 	}
 
 	public String getCLIENT_TYPENAME() {
-		return CLIENT_TYPENAME;
+		return client_TYPENAME;
 	}
 
 	public void setCLIENT_TYPENAME(String cLIENT_TYPENAME) {
-		CLIENT_TYPENAME = cLIENT_TYPENAME;
+		client_TYPENAME = cLIENT_TYPENAME;
 	}
 
 	public String getSTORE_TYPENAME() {
-		return STORE_TYPENAME;
+		return store_TYPENAME;
 	}
 
 	public void setSTORE_TYPENAME(String sTORE_TYPENAME) {
-		STORE_TYPENAME = sTORE_TYPENAME;
+		store_TYPENAME = sTORE_TYPENAME;
 	}
 
 	public String getSTORE_NAME() {
-		return STORE_NAME;
+		return store_NAME;
 	}
 
 	public void setSTORE_NAME(String sTORE_NAME) {
-		STORE_NAME = sTORE_NAME;
+		store_NAME = sTORE_NAME;
 	}
 
 	public String getORDER_PRICE() {
-		return ORDER_PRICE;
+		return order_PRICE;
 	}
 
 	public void setORDER_PRICE(String oRDER_PRICE) {
-		ORDER_PRICE = oRDER_PRICE;
+		order_PRICE = oRDER_PRICE;
 	}
 
 	public String getORDER_NUMBER() {
-		return ORDER_NUMBER;
+		return order_NUMBER;
 	}
 
 	public void setORDER_NUMBER(String oRDER_NUMBER) {
-		ORDER_NUMBER = oRDER_NUMBER;
+		order_NUMBER = oRDER_NUMBER;
 	}
 
 	public String getORDERAMOUNT() {
-		return ORDERAMOUNT;
+		return orderamount;
 	}
 
 	public void setORDERAMOUNT(String oRDERAMOUNT) {
-		ORDERAMOUNT = oRDERAMOUNT;
+		orderamount = oRDERAMOUNT;
 	}
 
 	public String getALLYH() {
-		return ALLYH;
+		return allyh;
 	}
 
 	public void setALLYH(String aLLYH) {
-		ALLYH = aLLYH;
+		allyh = aLLYH;
 	}
 
 	public String getPAYMENT_AMOUNT() {
-		return PAYMENT_AMOUNT;
+		return payment_AMOUNT;
 	}
 
 	public void setPAYMENT_AMOUNT(String pAYMENT_AMOUNT) {
-		PAYMENT_AMOUNT = pAYMENT_AMOUNT;
+		payment_AMOUNT = pAYMENT_AMOUNT;
 	}
 
-	public DailySalesAnalysis(String oRDER_CREATE_DATE, String dayWeek,
-			String cLIENT_TYPENAME, String sTORE_TYPENAME, String sTORE_NAME,
-			String oRDER_PRICE, String oRDER_NUMBER, String oRDERAMOUNT,
-			String aLLYH, String pAYMENT_AMOUNT) {
+	public DailySalesAnalysis(String order_CREATE_DATE, String dayWeek,
+			String client_TYPENAME, String store_TYPENAME, String store_NAME,
+			String order_PRICE, String order_NUMBER, String orderamount,
+			String allyh, String payment_AMOUNT) {
 		super();
-		ORDER_CREATE_DATE = oRDER_CREATE_DATE;
+		this.order_CREATE_DATE = order_CREATE_DATE;
 		this.dayWeek = dayWeek;
-		CLIENT_TYPENAME = cLIENT_TYPENAME;
-		STORE_TYPENAME = sTORE_TYPENAME;
-		STORE_NAME = sTORE_NAME;
-		ORDER_PRICE = oRDER_PRICE;
-		ORDER_NUMBER = oRDER_NUMBER;
-		ORDERAMOUNT = oRDERAMOUNT;
-		ALLYH = aLLYH;
-		PAYMENT_AMOUNT = pAYMENT_AMOUNT;
+		this.client_TYPENAME = client_TYPENAME;
+		this.store_TYPENAME = store_TYPENAME;
+		this.store_NAME = store_NAME;
+		this.order_PRICE = order_PRICE;
+		this.order_NUMBER = order_NUMBER;
+		this.orderamount = orderamount;
+		this.allyh = allyh;
+		this.payment_AMOUNT = payment_AMOUNT;
 	}
 
 	public DailySalesAnalysis() {
