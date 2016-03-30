@@ -25,7 +25,7 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 	/**
 	 * 获得用户分析报表--有消费记录 获取全部数据--不使用
 	 */
-	public List<UserAnalysis> getUserAnalysisWithExpenseRecord() {
+	public List<UserAnalysis> getUserAnalysisWithExpenseRecord()throws Exception {
 		String Key = "UerAnalysisWithExpenseRecord";
 		RedisUtil redis = RedisUtil.getRedis();
 		String res = redis.getdat(Key);
@@ -47,7 +47,7 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 	/**
 	 * 获得用户分析报表--有消费记录_分页 常用
 	 */
-	public List<UserAnalysis> getUserAnalysisWithExpenseRecord(int st, int ed) {
+	public List<UserAnalysis> getUserAnalysisWithExpenseRecord(int st, int ed) throws Exception{
 		// 拼接Redis Key
 		String Key = "UserValidFrom" + st + "To" + ed;
 
@@ -85,7 +85,7 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 	/**
 	 * 获得用户分析报表--无消费记录 获取全部数据--不使用
 	 */
-	public List<UserAnalysis> getUserAnalysisNoExpenseRecord() {
+	public List<UserAnalysis> getUserAnalysisNoExpenseRecord()throws Exception{
 		String Key = "UserAnalysisNoExpenseRecord";
 
 		RedisUtil redis = RedisUtil.getRedis();
@@ -109,7 +109,7 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 	/**
 	 * 获得用户分析报表--无消费记录_分页 常用
 	 */
-	public List<UserAnalysis> getUserAnalysisNoExpenseRecord(int st, int ed) {
+	public List<UserAnalysis> getUserAnalysisNoExpenseRecord(int st, int ed) throws Exception{
 		// 拼接Redis Key
 		String Key = "UserInvalidFrom" + st + "To" + ed;
 
@@ -145,7 +145,7 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 	}
 
 	// 获得有效用户数据量
-	public int getNumOfUserAnalysisValid() {
+	public int getNumOfUserAnalysisValid() throws Exception{
 		// 拼接Redis Key
 		String Key = "UserValidNum";
 
@@ -176,7 +176,7 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 	}
 
 	// 获得无效用户数量
-	public int getNumOfUserAnalysisInvalid() {
+	public int getNumOfUserAnalysisInvalid() throws Exception{
 		// 拼接Redis Key
 		String Key = "UserInvalidNum";
 

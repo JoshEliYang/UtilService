@@ -26,6 +26,7 @@ import cn.springmvc.service.SaleTopAnalysisService;
 import cn.springmvc.service.SalesDataService;
 import cn.springmvc.service.ThisYearTrafficAnalysisService;
 import cn.springmvc.service.UserAnalysisService;
+import jxl.common.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.springmvc.utils.ExcelUtils;
@@ -50,6 +51,8 @@ public class ReportExcelExprotController {
 	
 	@Autowired
 	public UserAnalysisService userService;
+	
+	Logger logger=Logger.getLogger(ReportExcelExprotController.class);
 	
 	/**
 	 * @author Josh Yang
@@ -304,6 +307,8 @@ public class ReportExcelExprotController {
 			ExcelUtils.listToExcel(reports,
 					this.getHaadToFiledUser(), "有效用户分析", response);
 		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("get valid user report error >>> \n"+e.getMessage());
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json; charset=utf-8");
 			responseMap.put("code", -1);
