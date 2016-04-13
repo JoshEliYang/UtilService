@@ -354,18 +354,20 @@ public class ReportExcelExprotController {
 	//Top销量
 	private LinkedHashMap<String, String> getHeadToFiledTopSales() {
 		LinkedHashMap<String, String> superClassMap = new LinkedHashMap<String, String>();
-		superClassMap.put("order_CREATE_DATE", "时间");
-		superClassMap.put("store_TYPENAME", "店铺类型");
-		superClassMap.put("store_NAME", "店铺名称");
-		superClassMap.put("cargo_NAME", "商品名");
+		superClassMap.put("ORDER_CREATE_DATE", "时间");
+		superClassMap.put("STORE_TYPENAME", "店铺类型");
+		superClassMap.put("STORE_NAME", "店铺名称");
+		superClassMap.put("CARGO_NO", "商品编号");
+		superClassMap.put("CARGO_NAME", "商品名");
 		superClassMap.put("goods_class_name", "商品类型");
-		superClassMap.put("payamount", "客支付");
-		superClassMap.put("saleCount", "销售金额");
+		superClassMap.put("saleCount", "销售量");
+		superClassMap.put("SALEAMOUNT", "销售金额");
 		superClassMap.put("totalRate", "毛利");
 		superClassMap.put("purchaseAmount", "正常进价");
 		superClassMap.put("ratePercent", "毛利率%");
 		superClassMap.put("jinbuCount", "进步率（销售量）");
 		superClassMap.put("jinbuAmount", "进步率（销售额）");
+		superClassMap.put("PAYAMOUNT", "支付金额");
 		
 		return superClassMap;
 	}

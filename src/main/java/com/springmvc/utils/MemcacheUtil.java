@@ -20,7 +20,7 @@ public class MemcacheUtil {
 	static String url = "10.117.214.106:11211";
 	// 外网IP
 	// static String url = "120.26.58.34:11211";
-	int expire = 3600 * 2;
+	int expire = 3600 * 25;
 
 	MemcachedClient memcachedClient = null;
 
