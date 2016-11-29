@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.springmvc.daoAdmin.LoginDao">
+
+	<select id="userVerify" resultType="Admin">
+		SELECT
+		*
+		FROM admin
+		WHERE
+		`name`
+		= #{0}
+		AND `pwd` = #{1}
+	</select>
+
+	<update id="changePwd">
+		UPDATE admin
+		SET pwd = #{1}
+		WHERE
+		id = #{0}
+	</update>
+
+	<update id="changeInfo" parameterType="Admin">
+		UPDATE admin
+		SET name =
+		#{name},
+		realName = #{realName}
+		WHERE
+		id = #{id}
+	</update>
+
+</mapper>
