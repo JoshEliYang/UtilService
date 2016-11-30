@@ -64,18 +64,18 @@ public class SsoController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/verify",method = RequestMethod.POST)
+	@RequestMapping(value = "/verify", method = RequestMethod.POST)
 	public Map<String, Object> verifyTicket(@RequestBody Ticket ticket) {
 		Ticket newTicket = null;
 		try {
 			boolean isValid = ssoService.verifyTicket(ticket);
 			if (!isValid) {
-				return HttpUtils.generateResponse("101", "尚未登录或登录超时", null);
+				return HttpUtils.generateResponse("101", "尚未登录或登录超时，重新登录", null);
 			}
 			newTicket = ssoService.storeTicket(ticket.getTarget());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return HttpUtils.generateResponse("-1", "服务器内部错误", null);
+			return HttpUtils.generateResponse("-1", "身份验证失败，重新登录", null);
 		}
 		return HttpUtils.generateResponse("0", "success", newTicket.getTicket());
 	}
