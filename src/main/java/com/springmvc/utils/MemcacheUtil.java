@@ -23,8 +23,8 @@ public class MemcacheUtil {
 
 	private MemcacheUtil() {
 		super();
-		// setup();
-		setupTest();
+		setup();
+		// setupTest();
 	}
 
 	public static MemcacheUtil getInstance() throws IOException {

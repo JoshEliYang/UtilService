@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springmvc.utils.MD5Util;
+
 import cn.springmvc.daoAdmin.LoginDao;
 import cn.springmvc.model.admin.Admin;
 import cn.springmvc.model.admin.LoginRequest;
@@ -17,7 +19,7 @@ import cn.springmvc.service.login.TokenService;
  * @author johnson
  *
  */
-@Service
+@Service("loginService")
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
@@ -39,7 +41,7 @@ public class LoginServiceImpl implements LoginService {
 			admin = admins.get(0);
 			admin.setPwd(null);
 			isExist = true;
-			timeStemp = String.valueOf(System.currentTimeMillis());
+			timeStemp = MD5Util.string2MD5(String.valueOf(System.currentTimeMillis()));
 		}
 		return new LoginResponse(isExist, admin, timeStemp);
 	}

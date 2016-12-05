@@ -19,6 +19,11 @@ public class LoginRequest {
 		this.pwd = pwd;
 	}
 
+	public LoginRequest(String userName, String pwd, boolean keepLong) {
+		this(userName, pwd);
+		this.keepLong = keepLong;
+	}
+
 	@Override
 	public String toString() {
 		return "LoginData [userName=" + userName + ", pwd=" + pwd + ", keepLong=" + keepLong + "]";

@@ -73,7 +73,6 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value = "/{token}", method = RequestMethod.GET)
 	public Map<String, Object> tokenVerify(@PathVariable String token, HttpServletResponse res) {
-
 		Admin admin = null;
 		try {
 			admin = tokenService.verifyToken(token);
