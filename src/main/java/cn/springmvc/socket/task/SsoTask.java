@@ -33,7 +33,7 @@ public class SsoTask {
 
 	private TokenService tokenService;
 
-	public SsoTask() {
+	private SsoTask() {
 		super();
 		ApplicationContext ac = new ClassPathXmlApplicationContext("conf/spring-mvc.xml");
 		AutowireCapableBeanFactory factory = ac.getAutowireCapableBeanFactory();
@@ -41,8 +41,12 @@ public class SsoTask {
 		tokenService = factory.createBean(TokenServiceImpl.class);
 	}
 
+	private static final class SsoTaskInstance {
+		private static final SsoTask INSTANCE = new SsoTask();
+	}
+
 	public static SsoTask getInstance() {
-		return new SsoTask();
+		return SsoTaskInstance.INSTANCE;
 	}
 
 	/**

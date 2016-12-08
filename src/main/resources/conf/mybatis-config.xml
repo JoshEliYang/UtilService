@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     	 
     	 <typeAlias alias="Admin" type="cn.springmvc.model.admin.Admin"/>
     	 <typeAlias alias="Token" type="cn.springmvc.model.token.Token"/>
+    	 <typeAlias alias="GSystem" type="cn.springmvc.model.GSystem"/>
     </typeAliases>
 
     <!-- 映射map -->

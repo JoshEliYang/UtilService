@@ -2,6 +2,7 @@ package cn.springmvc.daoAdmin;
 
 import java.util.List;
 
+import cn.springmvc.model.GSystem;
 import cn.springmvc.model.admin.Admin;
 
 /**
@@ -18,6 +19,15 @@ public interface LoginDao {
 	 * @throws Exception
 	 */
 	public List<Admin> userVerify(String userName, String pwd) throws Exception;
+
+	/**
+	 * get systems by administrator's id
+	 * 
+	 * @param adminId
+	 * @return
+	 * @throws Exception
+	 */
+	public List<GSystem> getSys(int adminId) throws Exception;
 
 	/**
 	 * change password

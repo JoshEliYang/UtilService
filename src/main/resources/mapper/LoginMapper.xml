@@ -30,4 +30,14 @@
 		id = #{id}
 	</update>
 
+	<select id="getSys" resultType="GSystem">
+		SELECT
+		b.*
+		FROM
+		`level` a,`system` b
+		WHERE
+		a.adminId = #{0}
+		AND a.sysId = b.sysId
+	</select>
+
 </mapper>

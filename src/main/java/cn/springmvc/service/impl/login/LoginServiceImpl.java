@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.springmvc.utils.MD5Util;
 
 import cn.springmvc.daoAdmin.LoginDao;
+import cn.springmvc.model.GSystem;
 import cn.springmvc.model.admin.Admin;
 import cn.springmvc.model.admin.LoginRequest;
 import cn.springmvc.model.admin.LoginResponse;
@@ -42,8 +43,16 @@ public class LoginServiceImpl implements LoginService {
 			admin.setPwd(null);
 			isExist = true;
 			timeStemp = MD5Util.string2MD5(String.valueOf(System.currentTimeMillis()));
+			admin.systemsToLevels(getSys(admin.getId()));
 		}
 		return new LoginResponse(isExist, admin, timeStemp);
+	}
+
+	/**
+	 * get system list
+	 */
+	public List<GSystem> getSys(int adminId) throws Exception {
+		return loginDao.getSys(adminId);
 	}
 
 	/**

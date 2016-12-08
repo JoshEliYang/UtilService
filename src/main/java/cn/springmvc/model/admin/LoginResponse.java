@@ -20,6 +20,7 @@ public class LoginResponse extends Admin {
 			this.setName(admin.getName());
 			this.setRealName(admin.getRealName());
 			this.setPwd(admin.getPwd());
+			this.setLevels(admin.getLevels());
 		}
 		this.setExist(isExist);
 		this.setToken(token);
@@ -28,7 +29,7 @@ public class LoginResponse extends Admin {
 	@Override
 	public String toString() {
 		return "LoginResponse [isExist=" + isExist + ", token=" + token + ", id=" + id + ", name=" + name
-				+ ", realName=" + realName + ", pwd=" + pwd + "]";
+				+ ", realName=" + realName + ", pwd=" + pwd + ", levels=" + levels + "]";
 	}
 
 	public boolean isExist() {

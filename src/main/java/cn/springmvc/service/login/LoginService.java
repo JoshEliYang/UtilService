@@ -1,5 +1,8 @@
 package cn.springmvc.service.login;
 
+import java.util.List;
+
+import cn.springmvc.model.GSystem;
 import cn.springmvc.model.admin.Admin;
 import cn.springmvc.model.admin.LoginRequest;
 import cn.springmvc.model.admin.LoginResponse;
@@ -18,6 +21,15 @@ public interface LoginService {
 	 * @throws Exception
 	 */
 	public LoginResponse login(LoginRequest loginDat) throws Exception;
+
+	/**
+	 * get system list
+	 * 
+	 * @param adminId
+	 * @return
+	 * @throws Exception
+	 */
+	public List<GSystem> getSys(int adminId) throws Exception;
 
 	/**
 	 * logout

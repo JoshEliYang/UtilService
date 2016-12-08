@@ -1,5 +1,10 @@
 package cn.springmvc.model.admin;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.springmvc.model.GSystem;
+
 /**
  * 
  * @author johnson
@@ -10,10 +15,19 @@ public class Admin {
 	String name;
 	String realName;
 	String pwd;
+	List<String> levels;
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", name=" + name + ", realName=" + realName + ", pwd=" + pwd + "]";
+		return "Admin [id=" + id + ", name=" + name + ", realName=" + realName + ", pwd=" + pwd + ", levels=" + levels
+				+ "]";
+	}
+
+	public void systemsToLevels(List<GSystem> systems) {
+		levels = new ArrayList<String>();
+		for (int i = 0; i < systems.size(); i++) {
+			levels.add(systems.get(i).getCode());
+		}
 	}
 
 	public int getId() {
@@ -46,6 +60,14 @@ public class Admin {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public List<String> getLevels() {
+		return levels;
+	}
+
+	public void setLevels(List<String> levels) {
+		this.levels = levels;
 	}
 
 }
