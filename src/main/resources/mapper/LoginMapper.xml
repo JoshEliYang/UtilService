@@ -40,4 +40,72 @@
 		AND a.sysId = b.sysId
 	</select>
 
+
+	<select id="permissionsContent" resultType="PermissionsModel">
+		SELECT
+			admin.id,
+			admin. NAME,
+			admin.realName,
+			admin.role
+		FROM
+			admin
+	</select>
+
+	<select id="getsysIds" resultType ="Integer">
+		SELECT
+			sysId
+		FROM
+			`level`
+		WHERE
+			`level`.adminId = #{0}
+	</select>
+	
+	<insert id="addUser" parameterType="UserInfoModel">
+		INSERT INTO admin (name, realName, pwd)
+		VALUES
+			(#{name} , #{realName}, #{pwd} )
+	</insert>
+
+
+	<update id="modefiedInfo" parameterType="UserInfoModel">
+		UPDATE admin
+		SET name =
+		#{name},
+		realName = #{realName}
+		WHERE
+		id = #{id}
+	</update>
+	
+		<update id="modefiedPWD" parameterType="UserInfoModel">
+		UPDATE admin
+		SET pwd =
+		#{pwd}
+		WHERE
+		id = #{id}
+	</update>
+
+		<update id="modefiedRole" parameterType="UserInfoModel">
+		UPDATE admin
+		SET role =
+		#{role}
+		WHERE
+		id = #{id}
+	</update>
+
+
+	<insert id="modefiedPermissionsAdd" parameterType="UserInfoModel">
+		INSERT INTO `level` (adminId, sysId)
+		VALUES
+			(#{id} , #{sysId})
+	</insert>
+	
+	<delete id="modefiedPermissionsRemove" parameterType="UserInfoModel">
+		DELETE
+		FROM
+			`level`
+		WHERE
+			`level`.adminId = #{id}
+		AND `level`.sysId = #{sysId}
+	</delete>
+
 </mapper>

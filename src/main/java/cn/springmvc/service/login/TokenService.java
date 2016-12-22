@@ -41,4 +41,6 @@ public interface TokenService {
 	 */
 	public Admin verifyToken(String token) throws Exception;
 
+	public void deleteUser(int adminId) throws Exception;
+
 }
