@@ -6,6 +6,8 @@ import cn.springmvc.model.GSystem;
 import cn.springmvc.model.admin.Admin;
 import cn.springmvc.model.admin.LoginRequest;
 import cn.springmvc.model.admin.LoginResponse;
+import cn.springmvc.model.admin.PermissionsModel;
+import cn.springmvc.model.admin.UserInfoModel;
 
 /**
  * 
@@ -54,7 +56,21 @@ public interface LoginService {
 	 * 
 	 * @param admin
 	 * @return
-	 * @throws Exception
+	 * @throws Exception 
 	 */
 	public int changeInfo(Admin admin) throws Exception;
+
+	public List<PermissionsModel> permissionsContent() throws Exception;
+
+	public void deleteUser(int adminId) throws Exception;
+
+	public void addUser(UserInfoModel rp) throws Exception;
+
+	public void modefiedPWD(UserInfoModel rp) throws Exception;
+
+	public void modefiedInfo(UserInfoModel rp) throws Exception;
+
+	public void modefiedRole(UserInfoModel rp) throws Exception;
+
+	public void modefiedPermissions(UserInfoModel rp) throws Exception;
 }
