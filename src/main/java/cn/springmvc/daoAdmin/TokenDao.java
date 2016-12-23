@@ -43,4 +43,6 @@ public interface TokenDao {
 	public Admin verifyToken(String token) throws Exception;
 
 	public void deleteUser(int adminId) throws Exception;
+
+	public void deleteUserLevel(int adminId);
 }

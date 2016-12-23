@@ -50,12 +50,16 @@
 	</select>
 	
 	
-		<delete id="deleteUser" parameterType="Integer">
+	<delete id="deleteUser" parameterType="Integer">
 		DELETE
 		FROM
 		admin
 		WHERE
 		id=#{0}
+	</delete>
+	
+	<delete id="deleteUserLevel" parameterType="Integer">
+		delete from `level` where `level`.adminId = #{0}
 	</delete>
 
 </mapper>
