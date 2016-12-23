@@ -48,5 +48,14 @@
 		WHERE
 		token = #{0}
 	</select>
+	
+	
+		<delete id="deleteUser" parameterType="Integer">
+		DELETE
+		FROM
+		admin
+		WHERE
+		id=#{0}
+	</delete>
 
 </mapper>

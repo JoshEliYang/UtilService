@@ -58,4 +58,10 @@ public class TokenServiceImpl implements TokenService {
 		return admin;
 	}
 
+	public void deleteUser(int adminId) throws Exception {
+		// TODO Auto-generated method stub
+		tokenDao.deleteUser(adminId);
+		
+	}
+
 }
