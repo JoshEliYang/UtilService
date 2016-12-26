@@ -26,6 +26,7 @@ import cn.springmvc.model.admin.PwdChangeData;
 import cn.springmvc.model.admin.UserInfoModel;
 import cn.springmvc.service.login.LoginService;
 import cn.springmvc.service.login.TokenService;
+import jxl.common.Logger;
 
 /**
  * Administrator controller
@@ -43,6 +44,8 @@ public class AdminController {
 
 	@Autowired
 	private TokenService tokenService;
+
+	Logger logger = Logger.getLogger(AdminController.class);
 
 	/**
 	 * log in
@@ -172,13 +175,11 @@ public class AdminController {
 	public Map<String, Object> getAll() {
 		return null;
 	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/permissionsContent", method = RequestMethod.GET)
 	public Map<String, Object> permissionsContent() {
 
 		List<PermissionsModel> per ;
-		
 		
 		try {
 			per = loginService.permissionsContent();
@@ -189,7 +190,6 @@ public class AdminController {
 		return HttpUtils.generateResponse("0", "success", per);
 	}
 
-	
 	/**
 	 * deleteUser
 	 * 
@@ -208,8 +208,6 @@ public class AdminController {
 		}
 		return HttpUtils.generateResponse("0", "success", null);
 	}
-	
-	
 	@ResponseBody
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public Map<String, Object> addUser(@RequestBody UserInfoModel rp) {
@@ -222,9 +220,7 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "添加成功", null);
 	}
-	
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/modefiedPWD", method = RequestMethod.POST)
 	public Map<String, Object> modefiedPWD(@RequestBody UserInfoModel rp) {
@@ -237,8 +233,6 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "修改成功", null);
 	}
-	
-	
 	@ResponseBody
 	@RequestMapping(value = "/modefiedInfo", method = RequestMethod.POST)
 	public Map<String, Object> modefiedInfo(@RequestBody UserInfoModel rp) {
@@ -251,7 +245,6 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "修改成功", null);
 	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/modefiedRole", method = RequestMethod.POST)
 	public Map<String, Object> modefiedRole(@RequestBody UserInfoModel rp) {
@@ -264,8 +257,6 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "修改成功", null);
 	}
-	
-	
 	@ResponseBody
 	@RequestMapping(value = "/modefiedPermissions", method = RequestMethod.POST)
 	public Map<String, Object> modefiedPermissions(@RequestBody UserInfoModel rp) {
@@ -278,5 +269,5 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "修改成功", null);
 	}
-	
+
 }

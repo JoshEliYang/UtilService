@@ -1,5 +1,6 @@
 package cn.springmvc.model.admin;
 
+
 import java.util.List;
 
 /**
@@ -9,22 +10,24 @@ import java.util.List;
  */
 public class UserInfoModel {
 	String name;
-	
-	String realName;
-	
-	String pwd;
-	
-	int id;
-	
-	String role;
-	
-	int sysId;
+
 	
 
+
+
+	String realName;
+
+	String pwd;
+
+	int id;
+
+	String role = "user";
+
+	int sysId;
+
 	int flag;
-	
-	
-	
+
+
 	public int getFlag() {
 		return flag;
 	}
@@ -88,5 +91,7 @@ public class UserInfoModel {
 				+ sysId + ", flag=" + flag + "]";
 	}
 
-	
+
+
+
 }

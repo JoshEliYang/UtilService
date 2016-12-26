@@ -16,11 +16,12 @@ public class Admin {
 	String realName;
 	String pwd;
 	List<String> levels;
+	String role;
 
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", name=" + name + ", realName=" + realName + ", pwd=" + pwd + ", levels=" + levels
-				+ "]";
+				+ ", role=" + role + "]";
 	}
 
 	public void systemsToLevels(List<GSystem> systems) {
@@ -68,6 +69,14 @@ public class Admin {
 
 	public void setLevels(List<String> levels) {
 		this.levels = levels;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

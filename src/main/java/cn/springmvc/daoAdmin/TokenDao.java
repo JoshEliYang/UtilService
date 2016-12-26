@@ -45,4 +45,5 @@ public interface TokenDao {
 	public void deleteUser(int adminId) throws Exception;
 
 	public void deleteUserLevel(int adminId);
+
 }
