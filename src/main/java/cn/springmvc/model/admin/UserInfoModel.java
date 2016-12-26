@@ -1,7 +1,5 @@
 package cn.springmvc.model.admin;
 
-import java.util.List;
-
 /**
  * 
  * @author zj
@@ -9,22 +7,19 @@ import java.util.List;
  */
 public class UserInfoModel {
 	String name;
-	
+
 	String realName;
-	
+
 	String pwd;
-	
+
 	int id;
-	
-	String role;
-	
+
+	String role = "user";
+
 	int sysId;
-	
 
 	int flag;
-	
-	
-	
+
 	public int getFlag() {
 		return flag;
 	}
@@ -83,10 +78,8 @@ public class UserInfoModel {
 
 	@Override
 	public String toString() {
-		return "UserInfoModel [name=" + name + ", realName=" + realName
-				+ ", pwd=" + pwd + ", id=" + id + ", role=" + role + ", sysId="
-				+ sysId + ", flag=" + flag + "]";
+		return "UserInfoModel [name=" + name + ", realName=" + realName + ", pwd=" + pwd + ", id=" + id + ", role="
+				+ role + ", sysId=" + sysId + ", flag=" + flag + "]";
 	}
 
-	
 }
