@@ -14,6 +14,8 @@ import cn.springmvc.model.admin.UserInfoModel;
  */
 public interface LoginDao {
 
+	public List<Admin> getAllinSys(String sysName) throws Exception;
+
 	/**
 	 * user verify
 	 * 
@@ -73,5 +75,5 @@ public interface LoginDao {
 
 	public void modefiedPermissionsRemove(UserInfoModel rp);
 
-	//public int[] getSysId(int id);
+	// public int[] getSysId(int id);
 }

@@ -17,6 +17,15 @@ import cn.springmvc.model.admin.UserInfoModel;
 public interface LoginService {
 
 	/**
+	 * get all users in specific system
+	 * 
+	 * @param sysName
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Admin> getAllinSys(String sysName) throws Exception;
+
+	/**
 	 * login
 	 * 
 	 * @return
@@ -56,7 +65,7 @@ public interface LoginService {
 	 * 
 	 * @param admin
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public int changeInfo(Admin admin) throws Exception;
 

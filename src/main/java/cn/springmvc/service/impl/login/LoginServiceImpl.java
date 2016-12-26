@@ -32,6 +32,20 @@ public class LoginServiceImpl implements LoginService {
 	private TokenService tokenService;
 
 	/**
+	 * get all users in specific system
+	 */
+	public List<Admin> getAllinSys(String sysName) throws Exception {
+		List<Admin> adminList = loginDao.getAllinSys(sysName);
+		Admin admin = null;
+		for (int i = 0; i < adminList.size(); i++) {
+			admin = adminList.get(i);
+			admin.setPwd(null);
+			admin.systemsToLevels(getSys(admin.getId()));
+		}
+		return adminList;
+	}
+
+	/**
 	 * login
 	 */
 	public LoginResponse login(LoginRequest loginDat) throws Exception {
@@ -78,59 +92,48 @@ public class LoginServiceImpl implements LoginService {
 		return loginDao.changeInfo(admin);
 	}
 
-	public List<PermissionsModel> permissionsContent() throws Exception{
-		// TODO Auto-generated method stub
-		List<PermissionsModel> per =  loginDao.permissionsContent();
-		for(int i = 0;i<per.size();i++){
+	public List<PermissionsModel> permissionsContent() throws Exception {
+		List<PermissionsModel> per = loginDao.permissionsContent();
+		for (int i = 0; i < per.size(); i++) {
 			List<Integer> sysIds = loginDao.getsysIds(per.get(i).getId());
-			//loginDao.getSysId(per.get(i).getId())
 			per.get(i).setSysId(sysIds);
 		}
-		
+
 		return per;
 	}
 
 	public void deleteUser(int adminId) throws Exception {
-		// TODO Auto-generated method stub
 		tokenService.deleteUser(adminId);
-		
+
 	}
 
 	public void addUser(UserInfoModel rp) throws Exception {
-		// TODO Auto-generated method stub
 		loginDao.addUser(rp);
-		
+
 	}
 
 	public void modefiedPWD(UserInfoModel rp) throws Exception {
-		// TODO Auto-generated method stub
-		
 		loginDao.modefiedPWD(rp);
-		
+
 	}
 
 	public void modefiedInfo(UserInfoModel rp) throws Exception {
-		// TODO Auto-generated method stub
 		loginDao.modefiedInfo(rp);
-		
+
 	}
 
 	public void modefiedRole(UserInfoModel rp) throws Exception {
-		// TODO Auto-generated method stub
 		loginDao.modefiedRole(rp);
-		
+
 	}
 
 	public void modefiedPermissions(UserInfoModel rp) throws Exception {
-		// TODO Auto-generated method stub
-		int i = 0;
-		
-		if(rp.getFlag() == 0){
+		if (rp.getFlag() == 0) {
 			loginDao.modefiedPermissionsRemove(rp);
-		}else{
+		} else {
 			loginDao.modefiedPermissionsAdd(rp);
 		}
-		
+
 	}
 
 }

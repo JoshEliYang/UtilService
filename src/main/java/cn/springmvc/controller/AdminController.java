@@ -172,15 +172,25 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	public Map<String, Object> getAll() {
-		return null;
+	@ResponseBody
+	@RequestMapping(value = "/getall/{sysName}", method = RequestMethod.GET)
+	public Map<String, Object> getAllinSys(@PathVariable String sysName) {
+		List<Admin> adminList = null;
+		try {
+			adminList = loginService.getAllinSys(sysName);
+			return HttpUtils.generateResponse("0", "success", adminList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("-1", "内部服务器错误", null);
+		}
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/permissionsContent", method = RequestMethod.GET)
 	public Map<String, Object> permissionsContent() {
 
-		List<PermissionsModel> per ;
-		
+		List<PermissionsModel> per;
+
 		try {
 			per = loginService.permissionsContent();
 		} catch (Exception e) {
@@ -208,6 +218,7 @@ public class AdminController {
 		}
 		return HttpUtils.generateResponse("0", "success", null);
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public Map<String, Object> addUser(@RequestBody UserInfoModel rp) {
@@ -233,6 +244,7 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "修改成功", null);
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/modefiedInfo", method = RequestMethod.POST)
 	public Map<String, Object> modefiedInfo(@RequestBody UserInfoModel rp) {
@@ -245,6 +257,7 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "修改成功", null);
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/modefiedRole", method = RequestMethod.POST)
 	public Map<String, Object> modefiedRole(@RequestBody UserInfoModel rp) {
@@ -257,6 +270,7 @@ public class AdminController {
 
 		return HttpUtils.generateResponse("0", "修改成功", null);
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/modefiedPermissions", method = RequestMethod.POST)
 	public Map<String, Object> modefiedPermissions(@RequestBody UserInfoModel rp) {

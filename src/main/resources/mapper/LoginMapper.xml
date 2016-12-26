@@ -4,6 +4,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.springmvc.daoAdmin.LoginDao">
 
+	<select id="getAllinSys" parameterType="String" resultType="Admin">
+		SELECT
+		a.*
+		FROM
+		`admin` a,
+		`level` b,
+		`system` c
+		WHERE
+		a.id = b.adminId
+		AND
+		b.sysId = c.sysId
+		AND c.`code` = #{0}
+	</select>
+
 	<select id="userVerify" resultType="Admin">
 		SELECT
 		*
@@ -43,27 +57,28 @@
 
 	<select id="permissionsContent" resultType="PermissionsModel">
 		SELECT
-			admin.id,
-			admin. NAME,
-			admin.realName,
-			admin.role
+		admin.id,
+		admin. NAME,
+		admin.realName,
+		admin.role
 		FROM
-			admin
+		admin
 	</select>
 
-	<select id="getsysIds" resultType ="Integer">
+	<select id="getsysIds" resultType="Integer">
 		SELECT
-			sysId
+		sysId
 		FROM
-			`level`
+		`level`
 		WHERE
-			`level`.adminId = #{0}
+		`level`.adminId = #{0}
 	</select>
-	
+
 	<insert id="addUser" parameterType="UserInfoModel">
-		INSERT INTO admin (name, realName, pwd)
+		INSERT INTO admin (name,
+		realName, pwd)
 		VALUES
-			(#{name} , #{realName}, #{pwd} )
+		(#{name} , #{realName}, #{pwd} )
 	</insert>
 
 
@@ -75,8 +90,8 @@
 		WHERE
 		id = #{id}
 	</update>
-	
-		<update id="modefiedPWD" parameterType="UserInfoModel">
+
+	<update id="modefiedPWD" parameterType="UserInfoModel">
 		UPDATE admin
 		SET pwd =
 		#{pwd}
@@ -84,7 +99,7 @@
 		id = #{id}
 	</update>
 
-		<update id="modefiedRole" parameterType="UserInfoModel">
+	<update id="modefiedRole" parameterType="UserInfoModel">
 		UPDATE admin
 		SET role =
 		#{role}
@@ -94,17 +109,18 @@
 
 
 	<insert id="modefiedPermissionsAdd" parameterType="UserInfoModel">
-		INSERT INTO `level` (adminId, sysId)
+		INSERT INTO
+		`level` (adminId, sysId)
 		VALUES
-			(#{id} , #{sysId})
+		(#{id} , #{sysId})
 	</insert>
-	
+
 	<delete id="modefiedPermissionsRemove" parameterType="UserInfoModel">
 		DELETE
 		FROM
-			`level`
+		`level`
 		WHERE
-			`level`.adminId = #{id}
+		`level`.adminId = #{id}
 		AND `level`.sysId = #{sysId}
 	</delete>
 
