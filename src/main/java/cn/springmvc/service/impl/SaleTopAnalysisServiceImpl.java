@@ -29,7 +29,7 @@ public class SaleTopAnalysisServiceImpl implements SaleTopAnalysisService {
 		// String res = redis.getdat("AllSaleTopData");
 
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
-		String res = memcache.getDat("AllSaleTopData", String.class);
+		String res = memcache.getDat("SalesTop", String.class);
 
 		List<SaleTopAnalysis> resList = null;
 		if (res != null) {
@@ -45,13 +45,13 @@ public class SaleTopAnalysisServiceImpl implements SaleTopAnalysisService {
 		/**
 		 * redis找不到
 		 */
-		resList = saleTopAnalysisdao.selectAllSaleTopData();
-		String outStr = JSON.toJSONString(resList);
+		//resList = saleTopAnalysisdao.selectAllSaleTopData();
+		//String outStr = JSON.toJSONString(resList);
 		// redis.setdat("AllSaleTopData", outStr);
-		memcache.setDat("AllSaleTopData", outStr);
+		//memcache.setDat("AllSaleTopData", outStr);
 
 		// redis.destroy();
-		memcache.destory();
+		//memcache.destory();
 		return resList;
 	}
 

@@ -29,30 +29,21 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 	 * 获得用户分析报表--有消费记录 获取全部数据--不使用
 	 */
 	public List<UserAnalysis> getUserAnalysisWithExpenseRecord() throws Exception {
-		String Key = "UerAnalysisWithExpenseRecord";
-		// RedisUtil redis = RedisUtil.getRedis();
-		// String res = redis.getdat(Key);
-
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
-		String res = memcache.getDat(Key, String.class);
-
+		int userValidNum = Integer.parseInt(memcache.getDat("UserValid_num", String.class));
+		int count = 500;
+		String resData = null;
+		for(int i = 0; userValidNum > i * count; i ++){
+			resData += memcache.getDat("UserValid_" + i * count + "_" + count, String.class);
+		}
 		List<UserAnalysis> resList = null;
-		if (res != null) {
-			resList = JSON.parseArray(res, UserAnalysis.class);
-
-			// redis.destroy();
-			memcache.destory();
+		if(resData != null){
+			resList = JSON.parseArray(resData, UserAnalysis.class);
 			return resList;
 		}
-		logger.error("memcache get null (get " + Key + ")");
 
-		resList = userDao.getUerAnalysisWithExpenseRecord();
-		String outStr = JSON.toJSONString(resList);
-		// redis.setdat(Key, outStr);
-		memcache.setDat(Key, outStr);
+		logger.error("memcache get null (get UserValid_offset_count)");
 
-		// redis.destroy();
-		memcache.destory();
 		return resList;
 	}
 

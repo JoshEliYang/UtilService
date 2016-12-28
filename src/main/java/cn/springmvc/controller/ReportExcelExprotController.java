@@ -66,7 +66,7 @@ public class ReportExcelExprotController {
 			HttpServletResponse response) {
 
 		PrintWriter writer = null;
-		List<LastYearTrafficAnalysis> reports = null;
+		List<ThisYearTrafficAnalysis> reports = null;
 		JSON json = null;
 		Map<String, Object> responseMap = null;
 		try {
@@ -232,7 +232,7 @@ public class ReportExcelExprotController {
 	
 	/**
 	 * @author Josh Yang
-	 * @description 15年销售top分析
+	 * @description 销售top分析
 	 * @date 2016-3-1
 	 * @return JSON
 	 */
@@ -276,7 +276,6 @@ public class ReportExcelExprotController {
 	
 	/**
 	 * 获得用户分析报表--有消费记录
-	 * 请求全部数据--比较慢，不使用
 	 * @return
 	 */
 	@ResponseBody

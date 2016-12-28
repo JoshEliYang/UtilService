@@ -28,7 +28,7 @@ public class ThisYearTrafficAnalysisServiceImpl implements ThisYearTrafficAnalys
 		// String res = redis.getdat("ThisYearAllTrafficAnalysis");
 
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
-		String res = memcache.getDat("ThisYearAllTrafficAnalysis", String.class);
+		String res = memcache.getDat("TrafficAnalysis2016", String.class);
 
 		List<ThisYearTrafficAnalysis> resList = null;
 		if (res != null) {
@@ -44,13 +44,13 @@ public class ThisYearTrafficAnalysisServiceImpl implements ThisYearTrafficAnalys
 		/**
 		 * redis找不到
 		 */
-		resList = thisYearTrafficAnalysisDAO.selectAllTrafficAnalysis();
-		String outStr = JSON.toJSONString(resList);
+		//resList = thisYearTrafficAnalysisDAO.selectAllTrafficAnalysis();
+		//String outStr = JSON.toJSONString(resList);
 		// redis.setdat("ThisYearAllTrafficAnalysis", outStr);
-		memcache.setDat("ThisYearAllTrafficAnalysis", outStr);
+		//memcache.setDat("TrafficAnalysis2016", outStr);
 
 		// redis.destroy();
-		memcache.destory();
+		//memcache.destory();
 		return resList;
 	}
 
