@@ -1,5 +1,6 @@
 package cn.springmvc.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -46,6 +47,33 @@ public class FeedBackController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("error occurred in FeedBackController >>>> " + e.getMessage());
+			return HttpUtils.generateResponse("-1", "服务器内部错误", null);
+		}
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/getfeedback",method = RequestMethod.GET)
+	public Map<String, Object> getfeedback() {
+		List<FeedBack> fback;
+		try {
+			fback = feedbackService.getfeedback();
+			return HttpUtils.generateResponse("0", "success", fback);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return HttpUtils.generateResponse("-1", "服务器内部错误", null);
+		}
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/deletefeedback",method = RequestMethod.POST)
+	public Map<String, Object> deletefeedback(@RequestBody FeedBack feedback) {
+		try {
+			feedbackService.deletefeedback(feedback);
+			return HttpUtils.generateResponse("0", "success", null);
+		} catch (Exception e) {
+			e.printStackTrace();
 			return HttpUtils.generateResponse("-1", "服务器内部错误", null);
 		}
 	}

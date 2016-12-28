@@ -1,5 +1,7 @@
 package cn.springmvc.service;
 
+import java.util.List;
+
 import cn.springmvc.model.feedback.FeedBack;
 
 /**
@@ -16,4 +18,8 @@ public interface FeedBackService {
 	 * @throws Exception
 	 */
 	public void addFeedBack(FeedBack feedback) throws Exception;
+
+	public List<FeedBack> getfeedback() throws Exception;
+
+	public void deletefeedback(FeedBack feedback) throws Exception;
 }
