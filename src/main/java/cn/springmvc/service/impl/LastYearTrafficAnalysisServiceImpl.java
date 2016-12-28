@@ -11,6 +11,7 @@ import com.springmvc.utils.MemcacheUtil;
 
 import cn.springmvc.dao.LastYearTrafficAnalysisDAO;
 import cn.springmvc.model.LastYearTrafficAnalysis;
+import cn.springmvc.model.ThisYearTrafficAnalysis;
 import cn.springmvc.service.LastYearTrafficAnalysisService;
 
 @Service
@@ -20,7 +21,7 @@ public class LastYearTrafficAnalysisServiceImpl implements LastYearTrafficAnalys
 
 	Logger logger = Logger.getLogger(LastYearTrafficAnalysisServiceImpl.class);
 
-	public List<LastYearTrafficAnalysis> selectAllTrafficAnalysisData() throws Exception {
+	public List<ThisYearTrafficAnalysis> selectAllTrafficAnalysisData() throws Exception {
 		/**
 		 * 先从redis中找
 		 */
@@ -28,12 +29,12 @@ public class LastYearTrafficAnalysisServiceImpl implements LastYearTrafficAnalys
 		// String res = redis.getdat("AllTrafficAnalysisData");
 
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
-		String res = memcache.getDat("AllTrafficAnalysisData", String.class);
+		String res = memcache.getDat("TrafficAnalysis2015", String.class);
 
-		List<LastYearTrafficAnalysis> resList = null;
+		List<ThisYearTrafficAnalysis> resList = null;
 		if (res != null) {
 			// 从redis中取数据
-			resList = JSON.parseArray(res, LastYearTrafficAnalysis.class);
+			resList = JSON.parseArray(res, ThisYearTrafficAnalysis.class);
 
 			// redis.destroy();
 			memcache.destory();
@@ -44,13 +45,13 @@ public class LastYearTrafficAnalysisServiceImpl implements LastYearTrafficAnalys
 		/**
 		 * redis找不到
 		 */
-		resList = trafficAnalysisDao.selectAllTrafficAnalysis();
-		String outStr = JSON.toJSONString(resList);
+		//resList = trafficAnalysisDao.selectAllTrafficAnalysis();
+		//String outStr = JSON.toJSONString(resList);
 		// redis.setdat("AllTrafficAnalysisData", outStr);
-		memcache.setDat("AllTrafficAnalysisData", outStr);
+		//memcache.setDat("TrafficAnalysis2015", outStr);
 
 		// redis.destroy();
-		memcache.destory();
+		//memcache.destory();
 		return resList;
 	}
 

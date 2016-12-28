@@ -29,7 +29,7 @@ public class SalesDataServiceImpl implements SalesDataService {
 		// String res = redis.getdat("AllSalesData");
 
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
-		String res = memcache.getDat("AllSalesData", String.class);
+		String res = memcache.getDat("AllSalesData2015", String.class);
 
 		List<DailySalesAnalysis> resList = null;
 		if (res != null) {
@@ -44,13 +44,13 @@ public class SalesDataServiceImpl implements SalesDataService {
 		/**
 		 * redis找不到
 		 */
-		resList = dao.selectAllSalesData();
-		String outStr = JSON.toJSONString(resList);
+		//resList = dao.selectAllSalesData();
+		//String outStr = JSON.toJSONString(resList);
 		// redis.setdat("AllSalesData", outStr);
-		memcache.setDat("AllSalesData", outStr);
+		//memcache.setDat("AllSalesData", outStr);
 
 		// redis.destroy();
-		memcache.destory();
+		//memcache.destory();
 		return resList;
 	}
 
@@ -78,13 +78,13 @@ public class SalesDataServiceImpl implements SalesDataService {
 		/**
 		 * redis找不到
 		 */
-		resList = dao.selectAllSalesData2016();
-		String outStr = JSON.toJSONString(resList);
+		//resList = dao.selectAllSalesData2016();
+		//String outStr = JSON.toJSONString(resList);
 		// redis.setdat("AllSalesData2016", outStr);
-		memcache.setDat("AllSalesData2016", outStr);
+		//memcache.setDat("AllSalesData2016", outStr);
 
 		// redis.destroy();
-		memcache.destory();
+		//memcache.destory();
 		return resList;
 	}
 
