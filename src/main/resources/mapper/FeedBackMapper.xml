@@ -20,4 +20,28 @@
 		)
 	</insert>
 
+
+	<select id="getfeedback" resultType="FeedBack">
+	SELECT
+		feedback.id,
+		admin. name,
+		admin.realName,
+		feedback.topic,
+		feedback.contant,
+		feedback.date
+	FROM
+		admin,
+		feedback
+	WHERE
+		feedback.userId = admin.id
+	</select>
+
+
+	<delete id="deletefeedback" parameterType="FeedBack">
+		DELETE from feedback where id = #{id}
+	</delete>
+	
+		<delete id="deletefeedbackAll">
+			DELETE from feedback
+	</delete>
 </mapper>
