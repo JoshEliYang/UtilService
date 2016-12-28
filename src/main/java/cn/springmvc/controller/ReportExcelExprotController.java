@@ -335,16 +335,16 @@ public class ReportExcelExprotController {
 	//销售日常分析
 	private LinkedHashMap<String, String> getLeadToFiledPDailySales() {
 		LinkedHashMap<String, String> superClassMap = new LinkedHashMap<String, String>();
-		superClassMap.put("order_CREATE_DATE", "日期");
+		superClassMap.put("ORDER_CREATE_DATE", "日期");
 		superClassMap.put("dayWeek", "星期");
-		superClassMap.put("client_TYPENAME", "订单");
-		superClassMap.put("store_TYPENAME", "店铺类型");
-		superClassMap.put("store_NAME", "店铺名称");
-		superClassMap.put("order_NUMBER", "订单数");
-		superClassMap.put("order_PRICE", "客单价");
-		superClassMap.put("orderamount", "订单金额");
-		superClassMap.put("allyh", "优惠金额");
-		superClassMap.put("payment_AMOUNT", "支付金额");
+		superClassMap.put("CLIENT_TYPENAME", "订单");
+		superClassMap.put("STORE_TYPENAME", "店铺类型");
+		superClassMap.put("STORE_NAME", "店铺名称");
+		superClassMap.put("ORDER_PRICE", "订单数");
+		superClassMap.put("ORDER_NUMBER", "客单价");
+		superClassMap.put("ORDERAMOUNT", "订单金额");
+		superClassMap.put("ALLYH", "优惠金额");
+		superClassMap.put("PAYMENT_AMOUNT", "支付金额");
 		
 		return superClassMap;
 	}

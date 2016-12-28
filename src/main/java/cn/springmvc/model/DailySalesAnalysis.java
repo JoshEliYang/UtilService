@@ -124,4 +124,14 @@ public class DailySalesAnalysis {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "DailySalesAnalysis [ORDER_CREATE_DATE=" + ORDER_CREATE_DATE + ", dayWeek=" + dayWeek
+				+ ", CLIENT_TYPENAME=" + CLIENT_TYPENAME + ", STORE_TYPENAME=" + STORE_TYPENAME + ", STORE_NAME="
+				+ STORE_NAME + ", ORDER_PRICE=" + ORDER_PRICE + ", ORDER_NUMBER=" + ORDER_NUMBER + ", ORDERAMOUNT="
+				+ ORDERAMOUNT + ", ALLYH=" + ALLYH + ", PAYMENT_AMOUNT=" + PAYMENT_AMOUNT + "]";
+	}
+	
+	
+
 }

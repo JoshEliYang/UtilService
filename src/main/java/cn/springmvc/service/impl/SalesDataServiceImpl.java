@@ -1,5 +1,6 @@
 package cn.springmvc.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -44,18 +45,16 @@ public class SalesDataServiceImpl implements SalesDataService {
 		return resList;
 	}
 
-	@SuppressWarnings("null")
 	public List<DailySalesAnalysis> selectAllSalesData2016() throws Exception {
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
 		int salesDataNum = Integer.parseInt(memcache.getDat("AllSalesData2016_num", String.class));
 		int count = 100;
-		List<DailySalesAnalysis> resList = null;
+		List<DailySalesAnalysis> resList = new ArrayList<DailySalesAnalysis>();
 		for(int i = 0; salesDataNum > i * count; i ++){
 			String resData = memcache.getDat("AllSalesData2016_" + i * count + "_" + count, String.class);
-			resList.add((DailySalesAnalysis) JSON.parseArray(resData, DailySalesAnalysis.class));
+			resList.addAll(JSON.parseArray(resData, DailySalesAnalysis.class));
 			
 		}
-		logger.error("AllSalesData2016" + resList);
 //		if (resList != null) {
 //			logger.error("Sales Data Num----" + salesDataNum);
 //			logger.error("res List----" + resList);

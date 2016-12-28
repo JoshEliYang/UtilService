@@ -1,5 +1,6 @@
 package cn.springmvc.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -32,16 +33,11 @@ public class UserAnalysisServiceImpl implements UserAnalysisService {
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
 		int userValidNum = Integer.parseInt(memcache.getDat("UserValid_num", String.class));
 		int count = 500;
-		String resData = null;
+		List<UserAnalysis> resList = new ArrayList<UserAnalysis>();
 		for(int i = 0; userValidNum > i * count; i ++){
-			resData += memcache.getDat("UserValid_" + i * count + "_" + count, String.class);
+			String resData = memcache.getDat("UserValid_" + i * count + "_" + count, String.class);
+			resList.addAll(JSON.parseArray(resData, UserAnalysis.class));
 		}
-		List<UserAnalysis> resList = null;
-		if(resData != null){
-			resList = JSON.parseArray(resData, UserAnalysis.class);
-			return resList;
-		}
-
 		logger.error("memcache get null (get UserValid_offset_count)");
 
 		return resList;
