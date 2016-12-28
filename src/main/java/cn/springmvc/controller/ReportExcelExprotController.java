@@ -188,8 +188,7 @@ public class ReportExcelExprotController {
 	
 	/**
 	 * @author Josh Yang
-	 * @description 15年销售分析
-	 * @date 2016-3-1
+	 * @description 16年销售分析
 	 * @return JSON
 	 */
 	@ResponseBody

@@ -41,50 +41,27 @@ public class SalesDataServiceImpl implements SalesDataService {
 			return resList;
 		}
 		logger.error("get memcache null (get AllSalesData)");
-		/**
-		 * redis找不到
-		 */
-		//resList = dao.selectAllSalesData();
-		//String outStr = JSON.toJSONString(resList);
-		// redis.setdat("AllSalesData", outStr);
-		//memcache.setDat("AllSalesData", outStr);
-
-		// redis.destroy();
-		//memcache.destory();
 		return resList;
 	}
 
+	@SuppressWarnings("null")
 	public List<DailySalesAnalysis> selectAllSalesData2016() throws Exception {
-		/**
-		 * 先从redis中找
-		 */
-		// RedisUtil redis = RedisUtil.getRedis();
-		// String res = redis.getdat("AllSalesData2016");
-
 		MemcacheUtil memcache = MemcacheUtil.getInstance();
-		String res = memcache.getDat("AllSalesData2016", String.class);
-
+		int salesDataNum = Integer.parseInt(memcache.getDat("AllSalesData2016_num", String.class));
+		int count = 100;
 		List<DailySalesAnalysis> resList = null;
-		if (res != null) {
-			// 从redis中取数据
-			resList = JSON.parseArray(res, DailySalesAnalysis.class);
-
-			// redis.destroy();
-			memcache.destory();
-			return resList;
+		for(int i = 0; salesDataNum > i * count; i ++){
+			String resData = memcache.getDat("AllSalesData2016_" + i * count + "_" + count, String.class);
+			resList.add((DailySalesAnalysis) JSON.parseArray(resData, DailySalesAnalysis.class));
+			
 		}
+		logger.error("AllSalesData2016" + resList);
+//		if (resList != null) {
+//			logger.error("Sales Data Num----" + salesDataNum);
+//			logger.error("res List----" + resList);
+//			return resList;
+//		}
 		logger.error("get memcache null (get AllSalesData2016)");
-
-		/**
-		 * redis找不到
-		 */
-		//resList = dao.selectAllSalesData2016();
-		//String outStr = JSON.toJSONString(resList);
-		// redis.setdat("AllSalesData2016", outStr);
-		//memcache.setDat("AllSalesData2016", outStr);
-
-		// redis.destroy();
-		//memcache.destory();
 		return resList;
 	}
 
